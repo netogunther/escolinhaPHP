@@ -1,5 +1,5 @@
 <?php
-// define variables and set to empty values
+// Definição de variáveis sem valores
 $name = $email = $gender = $comment = $website = "";
 $nameErr = $emailErr = $genderErr = $websiteErr = "";
 
@@ -89,22 +89,33 @@ function test_input($data) {
 echo htmlspecialchars($_SERVER["PHP_SELF"]);
 ?>">
 
-            Name: <input type="text" name="name" class="<?= strlen($nameErr) != 0 ? "err" : ""; ?>">
+            Name: <input type="text" name="name" class="<?= strlen($nameErr) != 0 ? "err" : ""; ?>" value="<?= $name;?>">
             <span class="error">* <?= $nameErr; ?></span>
             <br><br>
             E-mail:
-            <input type="text" name="email" class="<?= strlen($emailErr) != 0 ? "err" : ""; ?>">
+            <input type="text" name="email" class="<?= strlen($emailErr) != 0 ? "err" : ""; ?>" value="<?= $email;?>">
             <span class="error">* <?= $emailErr; ?></span>
             <br><br>
             Website:
-            <input type="text" name="website">
+            <input type="text" 
+                   name="website" 
+                   class="<?= strlen($websiteErr) != 0 ? "err" : ""; ?>" 
+                   value="<?= $website;?>">
             <span class="error"><?= $websiteErr; ?></span>
             <br><br>
-            Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+            
+            Comment: <textarea name="comment" 
+                               rows="5" 
+                               cols="40"><?= $comment;?></textarea>
+            
             <br><br>
             Gender:
-            <input type="radio" name="gender" value="female" class="<?= strlen($genderErr) != 0 ? "err" : ""; ?>">Female
-            <input type="radio" name="gender" value="male" class="<?= strlen($genderErr) != 0 ? "err" : ""; ?>">Male
+            <input type="radio" name="gender" value="female" class="<?= strlen($genderErr) != 0 ? "err" : ""; ?>" 
+                   <?php if (isset($gender) && $gender=="female") echo "checked";?>
+                   >Female
+            <input type="radio" name="gender" value="male" class="<?= strlen($genderErr) != 0 ? "err" : ""; ?>" 
+                   <?php if (isset($gender) && $gender=="male") echo "checked";?>
+                   >Male
             <span class="error">* <?= $genderErr; ?></span>
             <br><br>
             <input type="submit" name="submit" value="Submit"> 
