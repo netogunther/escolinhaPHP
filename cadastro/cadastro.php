@@ -1,11 +1,12 @@
 <?php
-require_once 'dbconfig.php';
-
-/**Verifica se o botão cadastrar foi pressionado
+/**
+ * Verifica se o botão cadastrar foi pressionado
  * 
  */
 if(isset($_POST['btn'])){
 
+    //Faz a requisição de dados paraconexão com o BD
+    require_once 'dbconfig.php';
 
 /*
  *Conexão com o banco de dados 
